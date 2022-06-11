@@ -1,0 +1,13 @@
+<!DOCTYPE html><html lang="ja"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width">
+<script type="module">
+const url = "https://taisukef.github.io/video/2022-06-10_tks-community.json";
+const data = await (await fetch(url)).json();
+let s = `<h1>${data[0].title}</h1>`;
+document.title = data[0].title;
+for (const d of data) {
+  const html = `<h2>${d.description} by <a href=${d.twitter}>${d.name}</a></h2><a href=${d.url}>動画リンク</a> ${d.duration}<br>`
+  s += html;
+}
+s += `<hr><a href=https://github.com/taisukef/video/>data and src on GitHub</a>`;
+document.body.innerHTML += s;
+</script>
